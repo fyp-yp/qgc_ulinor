@@ -150,6 +150,7 @@ public class QGCActivity extends QtActivity
                     synchronized (_instance) {
                         UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
                         if (device != null) {
+                            Log.i(TAG, "device fyp 0 " + action);
                             UsbSerialDriver driver = _findDriverByDeviceId(device.getDeviceId());
 
                             if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
@@ -160,6 +161,7 @@ public class QGCActivity extends QtActivity
                                 driver.setPermissionStatus(UsbSerialDriver.permissionStatusDenied);
                             }
                         }
+                        Log.i(TAG, "device fyp 1 " + action);
                     }
                 } else if (UsbManager.ACTION_USB_DEVICE_DETACHED.equals(action)) {
                     UsbDevice device = (UsbDevice)intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
